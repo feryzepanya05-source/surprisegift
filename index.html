@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Bunga! ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            background-color: #FAF9F6;
+            color: #1c1917;
+            line-height: 1.625;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background-color: #C6B07E;
+            color: #FFFFFF;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #FAF9F6; }
+        ::-webkit-scrollbar-thumb { background: #C6B07E; border-radius: 3px; }
+
+        /* ============================================
+           PETAL ANIMATION
+           ============================================ */
+        #petal-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .petal {
+            position: absolute;
+            top: -40px;
+            opacity: 0;
+            animation: petalFall linear forwards;
+        }
+
+        @keyframes petalFall {
+            0% {
+                opacity: 0;
+                transform: translateX(0) rotate(0deg) scale(0.8);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                opacity: 0;
+                top: 110vh;
+                transform: translateX(var(--drift)) rotate(var(--rotation)) scale(0.4);
+            }
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(160deg, #FAF9F6 0%, #f5e6e0 40%, #f0d5cd 70%, #e8c4ba 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(198,176,126,0.15) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(220,167,165,0.2) 0%, transparent 70%);
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 24px;
+        }
+
+        .title-wrapper {
+            margin-bottom: 48px;
+        }
+
+        .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 1.125rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #78716c;
+            margin-bottom: 16px;
+        }
+
+        .hero-main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.025em;
+            color: #1c1917;
+            margin-bottom: 16px;
+        }
+
+        .hero-main-title .heart {
+            display: inline-block;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.25); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.15); }
+            60% { transform: scale(1); }
+        }
+
+        .hero-bottom-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.25rem, 4vw, 2rem);
+            font-weight: 500;
+            font-style: italic;
+            color: #57534e;
+        }
+
+        .scroll-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border: 1px solid rgba(198,176,126,0.4);
+            border-radius: 9999px;
+            color: #78716c;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.5s ease;
+            background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(4px);
+        }
+
+        .scroll-btn:hover {
+            border-color: #C6B07E;
+            color: #1c1917;
+            background: rgba(255,255,255,0.6);
+            transform: translateY(-2px);
+        }
+
+        .scroll-btn svg {
+            width: 16px;
+            height: 16px;
+            animation: bounceDown 2s infinite;
+        }
+
+        @keyframes bounceDown {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(5px); }
+            60% { transform: translateY(3px); }
+        }
+
+        /* ============================================
+           ANIMATIONS (Entrance)
+           ============================================ */
+        .fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+        }
+
+        .fade-in-up-delay {
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.8s forwards;
+        }
+
+        .zoom-in {
+            opacity: 0;
+            animation: zoomIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           SECTION TITLE
+           ============================================ */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 500;
+            text-align: center;
+            color: #1c1917;
+            margin-bottom: 48px;
+            letter-spacing: -0.025em;
+        }
+
+        /* ============================================
+           GALLERY SECTION
+           ============================================ */
+        .gallery-section {
+            padding: 96px 24px;
+            background-color: #FAF9F6;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+            aspect-ratio: 4/5;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(30%);
+            transition: all 0.7s ease;
+        }
+
+        .gallery-item:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.05);
+            transition: background 0.5s ease;
+            pointer-events: none;
+        }
+
+        .gallery-item:hover::after {
+            background: transparent;
+        }
+
+        /* ============================================
+           TIMELINE SECTION
+           ============================================ */
+        .timeline-section {
+            padding: 96px 24px;
+            background: linear-gradient(180deg, #FAF9F6 0%, #f5ece7 100%);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, #C6B07E, #C6B07E, transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 0 40px 48px;
+        }
+
+        .timeline-item.left {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item.right {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #C6B07E;
+            border: 2px solid #FAF9F6;
+            box-shadow: 0 0 0 3px rgba(198,176,126,0.3);
+            z-index: 2;
+        }
+
+        .timeline-item.left::before {
+            right: -6px;
+        }
+
+        .timeline-item.right::before {
+            left: -6px;
+        }
+
+        .glass-card-small {
+            background: rgba(255,255,255,0.5);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.6);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);
+            border-radius: 4px;
+            padding: 24px 28px;
+            transition: all 0.5s ease;
+        }
+
+        .glass-card-small:hover {
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+            background: rgba(255,255,255,0.7);
+        }
+
+        .glass-card-small h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1c1917;
+            margin-bottom: 8px;
+        }
+
+        .glass-card-small p {
+            font-size: 0.9rem;
+            color: #57534e;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           GARDEN SECTION
+           ============================================ */
+        .garden-section {
+            padding: 96px 24px;
+            background-color: #FAF9F6;
+            text-align: center;
+        }
+
+        .garden-subtitle {
+            font-size: 0.95rem;
+            color: #78716c;
+            margin-bottom: 48px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .garden-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .garden-item {
+            cursor: pointer;
+            text-align: center;
+            padding: 24px 12px;
+            border-radius: 12px;
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .garden-item:hover {
+            background: rgba(198,176,126,0.08);
+            transform: translateY(-4px);
+        }
+
+        .garden-item .seed {
+            font-size: 2.5rem;
+            transition: all 0.6s ease;
+            display: inline-block;
+        }
+
+        .garden-item .flower {
+            font-size: 3rem;
+            display: inline-block;
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .garden-item .flower.hidden {
+            opacity: 0;
+            transform: scale(0);
+            position: absolute;
+            top: 24px;
+            left: 50%;
+            margin-left: -24px;
+        }
+
+        .garden-item .flower.visible {
+            opacity: 1;
+            transform: scale(1);
+            position: relative;
+            top: auto;
+            left: auto;
+            margin-left: 0;
+        }
+
+        .garden-item.grown .seed {
+            opacity: 0;
+            transform: scale(0);
+            position: absolute;
+        }
+
+        .secret-message {
+            margin-top: 12px;
+            font-size: 0.8rem;
+            color: #57534e;
+            line-height: 1.5;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.6s ease 0.4s;
+            min-height: 40px;
+        }
+
+        .secret-message.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           MESSAGE SECTION
+           ============================================ */
+        .message-section {
+            padding: 80px 24px;
+            background: linear-gradient(180deg, #f5ece7 0%, #FAF9F6 100%);
+            display: flex;
+            justify-content: center;
+        }
+
+        .glass-card {
+            max-width: 700px;
+            background: rgba(255,255,255,0.45);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.6);
+            box-shadow: 0 20px 60px -15px rgba(0,0,0,0.05);
+            border-radius: 4px;
+            padding: 48px;
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255,255,255,0.65);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+
+        .glass-card p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-style: italic;
+            font-weight: 500;
+            color: #1c1917;
+            line-height: 1.8;
+        }
+
+        /* ============================================
+           ACTION SECTION
+           ============================================ */
+        .action-section {
+            padding: 64px 24px 96px;
+            background-color: #FAF9F6;
+            text-align: center;
+        }
+
+        .gold-btn {
+            display: inline-block;
+            padding: 16px 48px;
+            background: #C6B07E;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 9999px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gold-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .gold-btn:hover {
+            background: #B5A070;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -10px rgba(198,176,126,0.4);
+        }
+
+        .gold-btn:hover::before {
+            left: 100%;
+        }
+
+        /* ============================================
+           MODAL OVERLAY
+           ============================================ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(28,25,23,0.6);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-body {
+            background: #FAF9F6;
+            border-radius: 8px;
+            max-width: 520px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 48px 36px;
+            text-align: center;
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .modal-overlay.open .modal-body {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border: 1px solid #e7e5e4;
+            border-radius: 50%;
+            background: #FAF9F6;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #78716c;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            border-color: #C6B07E;
+            color: #1c1917;
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 500;
+            color: #1c1917;
+            margin-bottom: 32px;
+        }
+
+        /* Polaroid */
+        .vintage-polaroid {
+            display: inline-block;
+            background: #FFFFFF;
+            padding: 12px 12px 48px;
+            box-shadow: 0 15px 40px -10px rgba(0,0,0,0.15);
+            transform: rotate(-2deg);
+            margin-bottom: 28px;
+            transition: transform 0.5s ease;
+        }
+
+        .vintage-polaroid:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .polaroid-frame {
+            width: 240px;
+            height: 240px;
+            overflow: hidden;
+        }
+
+        .polaroid-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(30%) contrast(90%);
+        }
+
+        .polaroid-caption {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #57534e;
+            margin-top: 0;
+        }
+
+        /* Message Container */
+        .message-container {
+            margin-bottom: 28px;
+        }
+
+        .message-container p {
+            font-size: 0.9rem;
+            color: #57534e;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        /* Love Coupon */
+        .love-coupon {
+            margin-bottom: 28px;
+        }
+
+        .coupon-border {
+            border: 2px dashed #C6B07E;
+            border-radius: 8px;
+            padding: 20px 24px;
+            background: rgba(198,176,126,0.06);
+        }
+
+        .coupon-border h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: #1c1917;
+            margin-bottom: 8px;
+        }
+
+        .coupon-border p {
+            font-size: 0.85rem;
+            color: #57534e;
+        }
+
+        .love-sign {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #C6B07E;
+        }
+
+        /* ============================================
+           MUSIC TOGGLE
+           ============================================ */
+        .music-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(198,176,126,0.3);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 9998;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px -8px rgba(0,0,0,0.1);
+        }
+
+        .music-toggle:hover {
+            background: rgba(255,255,255,0.9);
+            transform: scale(1.1);
+            box-shadow: 0 12px 30px -8px rgba(0,0,0,0.15);
+        }
+
+        .music-toggle.playing {
+            animation: pulse-ring 2s ease-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(198,176,126,0.4); }
+            70% { box-shadow: 0 0 0 12px rgba(198,176,126,0); }
+            100% { box-shadow: 0 0 0 0 rgba(198,176,126,0); }
+        }
+
+        /* ============================================
+           CONFETTI
+           ============================================ */
+        .confetti-piece {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            z-index: 10001;
+            pointer-events: none;
+            animation: confettiFall linear forwards;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            padding: 32px 24px;
+            text-align: center;
+            background: #1c1917;
+        }
+
+        .footer p {
+            font-size: 0.75rem;
+            color: #78716c;
+            letter-spacing: 0.1em;
+        }
+
+        .footer span {
+            color: #C6B07E;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                text-align: left !important;
+                padding-left: 52px;
+                padding-right: 16px;
+            }
+
+            .timeline-item::before {
+                left: 14px !important;
+                right: auto !important;
+            }
+
+            .garden-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .glass-card {
+                padding: 32px 24px;
+            }
+
+            .glass-card p {
+                font-size: 1.05rem;
+            }
+
+            .modal-body {
+                padding: 36px 24px;
+            }
+
+            .polaroid-frame {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-main-title {
+                font-size: 2.8rem;
+            }
+
+            .section-title {
+                margin-bottom: 36px;
+            }
+
+            .gallery-section,
+            .timeline-section,
+            .garden-section {
+                padding: 64px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Audio -->
+    <audio id="bg-music" loop>
+        <source src="audio.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Petal Container -->
+    <div id="petal-container"></div>
+
+    <!-- Music Toggle -->
+    <button class="music-toggle" id="music-toggle" title="Mainkan Musik">🎵</button>
+
+    <!-- ==================== HERO ==================== -->
+    <header class="hero" id="home">
+        <div class="hero-content">
+            <div class="title-wrapper">
+                <p class="hero-subtitle fade-in-up">Halo Sayanggg</p>
+                <h1 class="hero-main-title zoom-in">
+                    Bungaaa! <span class="heart">❤️</span>
+                </h1>
+                <p class="hero-bottom-title fade-in-up-delay">Selamat Ulang Tahun</p>
+            </div>
+            <a href="#gallery" class="scroll-btn fade-in-up-delay">
+                Scroll ke bawah
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- ==================== GALLERY ==================== -->
+    <section class="gallery-section" id="gallery">
+        <h2 class="section-title reveal">About Bunga ❤️</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item reveal">
+                <img src="1.jpeg" alt="Foto 1">
+            </div>
+            <div class="gallery-item reveal">
+                <img src="3.jpeg" alt="Foto 2">
+            </div>
+            <div class="gallery-item reveal">
+                <img src="7.jpeg" alt="Foto 3">
+            </div>
+            <div class="gallery-item reveal">
+                <img src="6.jpeg" alt="Foto 4">
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TIMELINE ==================== -->
+    <section class="timeline-section" id="timeline">
+        <h2 class="section-title reveal">About us</h2>
+        <div class="timeline">
+            <div class="timeline-item left reveal">
+                <div class="timeline-content glass-card-small">
+                    <h3>20 april </h3>
+                    <p>Pertama kali kita kenal kalo ga salah hehe ✨</p>
+                </div>
+            </div>
+            <div class="timeline-item right reveal">
+                <div class="timeline-content glass-card-small">
+                    <h3>july 2024</h3>
+                    <p>Pertama kali kitaa..... ❤️</p>
+                </div>
+            </div>
+            <div class="timeline-item left reveal">
+                <div class="timeline-content glass-card-small">
+                    <h3>Hari Ini</h3>
+                    <p>Selamat ulang tahun, sayang! 🎂</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== GARDEN ==================== -->
+    <section class="garden-section" id="garden">
+        <h2 class="section-title reveal">Kebun Bunga Rahasia 🌸</h2>
+        <p class="garden-subtitle reveal">Coba km klik benih tanaman ini sayang</p>
+        <div class="garden-grid reveal">
+            <div class="garden-item" onclick="growFlower(this, 'Hai sayangggggg! 💖')">
+                <div class="seed">🌱</div>
+                <div class="flower hidden">🌸</div>
+                <div class="secret-message"></div>
+            </div>
+            <div class="garden-item" onclick="growFlower(this, 'Sehat selalu, yaa! 🥺')">
+                <div class="seed">🌱</div>
+                <div class="flower hidden">🌻</div>
+                <div class="secret-message"></div>
+            </div>
+            <div class="garden-item" onclick="growFlower(this, 'love u always. 🥰')">
+                <div class="seed">🌱</div>
+                <div class="flower hidden">🌷</div>
+                <div class="secret-message"></div>
+            </div>
+            <div class="garden-item" onclick="growFlower(this, 'Tuhan berkati selalu ✨')">
+                <div class="seed">🌱</div>
+                <div class="flower hidden">🌺</div>
+                <div class="secret-message"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MESSAGE ==================== -->
+    <section class="message-section reveal" id="message">
+        <div class="glass-card">
+            <p>"Selamat ulang tahun sayang. May your day be as beautiful, radiant, and elegant as you are. ❤️"</p>
+        </div>
+    </section>
+
+    <!-- ==================== ACTION ==================== -->
+    <section class="action-section reveal" id="gift">
+        <button id="open-modal-btn" class="gold-btn">Ada Kado virtual dari aku coba klik ya ✨</button>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <p>Made with <span>❤️</span> by Fery — untuk Bunga</p>
+    </footer>
+
+    <!-- ==================== MODAL ==================== -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-body">
+            <button class="modal-close" id="modal-close">✕</button>
+
+            <h2 class="modal-title">Surprise, Sayang! ✨</h2>
+
+            <div class="vintage-polaroid">
+                <div class="polaroid-frame">
+                    <img src="2.jpeg" alt="Foto Kenangan">
+                </div>
+                <p class="polaroid-caption">bunga virtual dlu ya wkwk.</p>
+            </div>
+
+            <div class="message-container">
+                <p>
+                    hai sayang, celamat ulang taunnn yaww kiranya di umur yang baru ini kamu selalu sehat, bahagia, dan sukses selalu, dan semoga kita bisa selalu bareng-bareng yaa, amin.
+                </p>
+            </div>
+
+            <div class="love-coupon">
+                <div class="coupon-border">
+                    <h4>🎟️ VOUCHER KENCAN SPESIAL 🎟️</h4>
+                    <p>Berlaku untuk: <b>Pelukk n Kiss unlimited wkwkw</b></p>
+                </div>
+            </div>
+
+            <p class="love-sign">from, fz ❤️</p>
+        </div>
+    </div>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script>
+        // ============================================
+        // PETAL ANIMATION
+        // ============================================
+        const petalContainer = document.getElementById('petal-container');
+        const petalEmojis = ['🌸', '🩷', '✨', '💗', '🪷', '🌺'];
+
+        function createPetal() {
+            const petal = document.createElement('span');
+            petal.classList.add('petal');
+            petal.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
+
+            const left = Math.random() * 100;
+            const duration = 6 + Math.random() * 6;
+            const delay = Math.random() * 2;
+            const size = 14 + Math.random() * 18;
+            const drift = -80 + Math.random() * 160;
+            const rotation = -360 + Math.random() * 720;
+
+            petal.style.left = left + '%';
+            petal.style.fontSize = size + 'px';
+            petal.style.animationDuration = duration + 's';
+            petal.style.animationDelay = delay + 's';
+            petal.style.setProperty('--drift', drift + 'px');
+            petal.style.setProperty('--rotation', rotation + 'deg');
+
+            petalContainer.appendChild(petal);
+
+            setTimeout(() => {
+                petal.remove();
+            }, (duration + delay) * 1000);
+        }
+
+        // Create petals periodically
+        setInterval(createPetal, 800);
+        // Initial burst
+        for (let i = 0; i < 8; i++) {
+            setTimeout(createPetal, i * 200);
+        }
+
+        // ============================================
+        // SCROLL REVEAL
+        // ============================================
+        const revealElements = document.querySelectorAll('.reveal');
+
+        function checkReveal() {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                if (top < windowHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', checkReveal);
+
+        // ============================================
+        // GARDEN INTERACTIVE
+        // ============================================
+        function growFlower(item, message) {
+            if (item.classList.contains('grown')) return;
+
+            const seed = item.querySelector('.seed');
+            const flower = item.querySelector('.flower');
+            const msgEl = item.querySelector('.secret-message');
+
+            item.classList.add('grown');
+            seed.style.opacity = '0';
+            seed.style.transform = 'scale(0)';
+            seed.style.position = 'absolute';
+
+            flower.classList.remove('hidden');
+            flower.classList.add('visible');
+
+            msgEl.textContent = message;
+            msgEl.classList.add('visible');
+        }
+
+        // ============================================
+        // MODAL
+        // ============================================
+        const modalOverlay = document.getElementById('modal-overlay');
+        const openModalBtn = document.getElementById('open-modal-btn');
+        const closeModalBtn = document.getElementById('modal-close');
+
+        openModalBtn.addEventListener('click', () => {
+            modalOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            launchConfetti();
+        });
+
+        closeModalBtn.addEventListener('click', closeModal);
+
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        function closeModal() {
+            modalOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // ============================================
+        // CONFETTI
+        // ============================================
+        function launchConfetti() {
+            const colors = ['#C6B07E', '#DCA7A5', '#f5e6e0', '#e8c4ba', '#A7C4BC', '#1c1917'];
+            const shapes = ['circle', 'square', 'strip'];
+
+            for (let i = 0; i < 60; i++) {
+                const piece = document.createElement('div');
+                piece.classList.add('confetti-piece');
+
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const shape = shapes[Math.floor(Math.random() * shapes.length)];
+                const left = Math.random() * 100;
+                const duration = 2 + Math.random() * 2;
+                const delay = Math.random() * 0.8;
+                const size = shape === 'strip' ? (4 + Math.random() * 4) + 'px ' + (12 + Math.random() * 10) + 'px' : (6 + Math.random() * 8) + 'px';
+
+                piece.style.left = left + 'vw';
+                piece.style.top = '-20px';
+                piece.style.backgroundColor = color;
+                piece.style.width = size;
+                piece.style.height = size;
+                piece.style.borderRadius = shape === 'circle' ? '50%' : shape === 'strip' ? '2px' : '0';
+                piece.style.animationDuration = duration + 's';
+                piece.style.animationDelay = delay + 's';
+
+                document.body.appendChild(piece);
+
+                setTimeout(() => piece.remove(), (duration + delay) * 1000);
+            }
+        }
+
+        // ============================================
+        // MUSIC TOGGLE
+        // ============================================
+        const bgMusic = document.getElementById('bg-music');
+        const musicToggle = document.getElementById('music-toggle');
+        let isPlaying = false;
+
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicToggle.textContent = '🎵';
+                musicToggle.classList.remove('playing');
+            } else {
+                bgMusic.play().then(() => {
+                    musicToggle.textContent = '🎶';
+                    musicToggle.classList.add('playing');
+                }).catch(() => {
+                    // Autoplay blocked — do nothing silently
+                });
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // ============================================
+        // SMOOTH SCROLL (for Safari fallback)
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
